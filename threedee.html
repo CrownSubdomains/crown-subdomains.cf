@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        @property --ty {
+            syntax: "<length-percentage>";
+            initial-value: 0%;
+            inherits: false;
+        }
+
+        @property --ay {
+            syntax: "<angle>";
+            initial-value: -45deg;
+            inherits: false;
+        }
+
+        @property --q {
+            syntax: "<integer>";
+            initial-value: 0;
+            inherits: false;
+        }
+
+        body, div {
+            display: grid;
+        }
+
+        body {
+            overflow: hidden;
+            margin: 0;
+            height: 100vh;
+            background: transparent;
+        }
+
+        div {
+            transform-style: preserve-3d;
+        }
+
+        .cube {
+            place-self: center;
+            transform: translatey(var(--ty, 0)) rotatex(-35deg) rotatey(calc(var(--ay, -45deg) - var(--q, 0)*90deg));
+            animation: ty 2s ease-in-out infinite alternate, ay 4s ease-in-out infinite, q 4s steps(1) infinite;
+        }
+
+        @keyframes ty {
+            to {
+                --ty: 12.5%;
+            }
+        }
+
+        @keyframes ay {
+            to {
+                --ay: 45deg;
+            }
+        }
+
+        @keyframes q {
+            50% {
+                --q: 1;
+            }
+        }
+
+        .face {
+            --i: 0;
+            --j: calc(1 - var(--i));
+            grid-area: 1/1;
+            grid-template: repeat(var(--n), 2em)/repeat(var(--n), 2em);
+            transform: rotate3d(var(--i), var(--j), 0, calc(var(--f, 1)*90deg)) translatez(calc(.5*var(--n)*2em));
+        }
+
+            .face:last-child {
+                --i: 1;
+            }
+
+        .tile {
+            --m: calc(.5*(var(--n) - 1));
+            --dx: max(var(--m) - var(--x), var(--x) - var(--m));
+            --dy: max(var(--m) - var(--y), var(--y) - var(--m));
+            --dt: calc((
+  	var(--j)*(.5*(var(--dx) + var(--y) + var(--m))/var(--m) - 2) +
+  	var(--i)*(.5*(var(--dx) + var(--dy))/var(--m) - 2))*2s);
+            backface-visibility: hidden;
+            border-radius: 5px;
+            box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.5), inset 0 0 1px 1px rgba(255, 255, 255, 0.5), 0 0 5px 2px currentcolor, inset 0 0 5px 2px currentcolor;
+            background: #141414;
+            color: fuchsia;
+            animation: a 0s var(--dt) infinite alternate;
+            animation-name: m, c;
+            animation-duration: 1s, 2s;
+            animation-timing-function: ease-in-out, linear;
+        }
+
+        @keyframes m {
+            to {
+                transform: translatez(-0.8em) scale(0.2);
+            }
+        }
+
+        @keyframes c {
+            to {
+                color: aqua;
+            }
+        }
+    </style>
+</head>
+<body>
+    <style>
+        .tile:nth-child(7n + 1) {
+            --x: 0
+        }
+
+        .tile:nth-child(n + 1) {
+            --y: 0
+        }
+
+        .tile:nth-child(7n + 2) {
+            --x: 1
+        }
+
+        .tile:nth-child(n + 8) {
+            --y: 1
+        }
+
+        .tile:nth-child(7n + 3) {
+            --x: 2
+        }
+
+        .tile:nth-child(n + 15) {
+            --y: 2
+        }
+
+        .tile:nth-child(7n + 4) {
+            --x: 3
+        }
+
+        .tile:nth-child(n + 22) {
+            --y: 3
+        }
+
+        .tile:nth-child(7n + 5) {
+            --x: 4
+        }
+
+        .tile:nth-child(n + 29) {
+            --y: 4
+        }
+
+        .tile:nth-child(7n + 6) {
+            --x: 5
+        }
+
+        .tile:nth-child(n + 36) {
+            --y: 5
+        }
+
+        .tile:nth-child(7n + 7) {
+            --x: 6
+        }
+
+        .tile:nth-child(n + 43) {
+            --y: 6
+        }
+    </style>
+    <div class="cube" style="--n: 7">
+        <div class="face" style="--f: 0">
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+        </div>
+        <div class="face" style="--f: 1">
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+        </div>
+        <div class="face">
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+        </div>
+    </div>
+</body>
+</html>
