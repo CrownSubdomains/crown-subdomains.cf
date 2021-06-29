@@ -1,0 +1,46 @@
+/* 
+    This CSS file was created by OwL for use by pointer.js, 
+     witch can be found on https://seattleowl.com. 
+*/
+
+#pointer-dot {
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border: 2.5px solid white;
+    position: fixed;
+    border-radius: 4px;
+    z-index: 101;
+    pointer-events: none;
+    transition: border-color 0.5s;
+}
+
+#pointer-ring {
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    padding: 15px;
+    border: 2px solid #6122f6;
+    position: fixed;
+    border-radius: 100px;
+    z-index: 102;
+    pointer-events: none;
+}
+
+html {
+    cursor: none !important;
+}
+
+a {
+    cursor: none !important;
+}
+
+.trail { /* className for the trail elements */
+    position: absolute;
+    height: 6px;
+    width: 6px;
+    border-radius: 3px;
+    background: #6122f6;
+}

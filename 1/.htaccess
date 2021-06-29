@@ -1,0 +1,23 @@
+#RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+
+#remove html file extension https://example.com/page.html
+# to https://example.com/page
+#https://help.dreamhost.com/hc/en-us/articles/215747748-How-can-I-redirect-and-rewrite-my-URLs-with-an-htaccess-file-
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC, L]
+Redirect /about https://cryptoware.info/#about
+Redirect /about.html https://cryptoware.info/#about
+Redirect /login https://fnageer.ml/gold
+Redirect /mail https://fnageer.ml/fmail2011
+Redirect /features https://cryptoware.info/#features
+Redirect /links https://cryptoware.info/#links
+Redirect /team https://cryptoware.info/#team
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php73” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php73 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
